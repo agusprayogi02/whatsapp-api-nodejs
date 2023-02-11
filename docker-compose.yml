@@ -11,25 +11,27 @@ services:
             - db:/data/db
     app:
         container_name: api
-        build:
-            context: .
-            dockerfile: Dockerfile
-            args:
-                - PORT=${PORT}
-        depends_on:
-            - mongodb
+        image: ilzam/salman-wa-api:1.0.0
+        # build:
+        #     context: .
+        #     dockerfile: Dockerfile
+        #     args:
+        #         - PORT=${PORT}
+        # depends_on:
+        #     - mongodb
         restart: unless-stopped
-        env_file: .env
+        # env_file: .env
         ports:
-            - ${PORT}:${PORT}
+            - 3333:3333
         environment:
-            - TOKEN=${TOKEN}
-            - PORT=${PORT}
-            - MONGODB_ENABLED=${MONGODB_ENABLED}
+            - TOKEN=lJnxvpmN9oEwsqAM2wA7
+            - PROTECT_ROUTES=true
+            - PORT=3333
+            - MONGODB_ENABLED=true
             - MONGODB_URL=mongodb://mongodb:27017
-            - WEBHOOK_ENABLED=${WEBHOOK_ENABLED}
-            - WEBHOOK_URL=${WEBHOOK_URL}
-            - WEBHOOK_BASE64=${WEBHOOK_BASE64}
+            # - WEBHOOK_ENABLED=false
+            # - WEBHOOK_URL=${WEBHOOK_URL}
+            # - WEBHOOK_BASE64=${WEBHOOK_BASE64}
         volumes:
             - ./:/home/node/app
             - /home/node/app/node_modules/
