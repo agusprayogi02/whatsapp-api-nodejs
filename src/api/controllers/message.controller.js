@@ -83,10 +83,23 @@ exports.List = async (req, res) => {
 }
 
 exports.MediaButton = async (req, res) => {
-    const data = await WhatsAppInstances[req.query.key].sendMediaButtonMessage(
-        req.body.id,
-        req.body.btndata
-    )
+    let data = []
+    if (req.body.id instanceof Array) {
+        let arrId = req.body.id;
+        await arrId.forEach(async e => {
+            const rest = await WhatsAppInstances[req.query.key].sendMediaButtonMessage(
+                e,
+                req.body.btndata
+            )
+            data.push(rest)
+        });
+    } else {
+        const rest = await WhatsAppInstances[req.query.key].sendMediaButtonMessage(
+            req.body.id,
+            req.body.btndata
+        )
+        data.push(rest)
+    }
     return res.status(201).json({ error: false, data: data })
 }
 
