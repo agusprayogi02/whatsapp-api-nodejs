@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "9db85f5b-971f-4218-8f0b-7eca66651a01",
+		"_postman_id": "2a3bb934-57b4-447e-9cd1-bc791764f2e7",
 		"name": "whatsapp-api-nodejs",
 		"description": "## **API** Documentation\n\n### whatsapp-api-nodejs\n\n[https://github.com/salman0ansari/whatsapp-api-nodejs](https://github.com/salman0ansari/whatsapp-api-nodejs)\n\nAn implementation of [Baileys](https://github.com/adiwajshing/Baileys/) as a simple RESTful API service with multi device support just `download`, `install`, and `start` using, `simple` as that.\n\nBuild with NodeJs + Express\n\n* * *\n\n## Legal Notice\n\n*   This code is in no way affiliated, authorized, maintained, sponsored or endorsed by WA(WhatsApp) or any of its affiliates or subsidiaries.\n*   The official WhatsApp website can be found at [https://whatsapp.com](https://whatsapp.com). \"WhatsApp\" as well as related names, marks, emblems and images are registered trademarks of their respective owners.\n*   This is an independent and unofficial software Use at your own risk.\n*   Do not spam people with this.\n    \n\n* * *\n\n## Contact\n\nDeveloper: [https://github.com/salman0ansari](https://github.com/salman0ansari)\n\nEmail: salman0ansari@pm.me\n\nTelegram: @salman0ansari",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23037943"
 	},
 	"item": [
 		{
@@ -15,6 +16,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -22,7 +33,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseUrl}}/instance/init?key=123&token=RANDOM_STRING_HERE",
+							"raw": "{{baseUrl}}/instance/init?token=RANDOM_STRING_HERE&key=123",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -38,13 +49,12 @@
 									"disabled": true
 								},
 								{
-									"key": "key",
-									"value": "123",
-									"description": "Custom Instance Key\n(Optional)"
-								},
-								{
 									"key": "token",
 									"value": "RANDOM_STRING_HERE"
+								},
+								{
+									"key": "key",
+									"value": "123"
 								}
 							]
 						},
@@ -55,6 +65,16 @@
 				{
 					"name": "Scan QR",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -81,6 +101,16 @@
 				{
 					"name": "Get QR in Base64",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -101,11 +131,140 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/instance/qrbase64?key={{instance_key}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"instance",
+										"qrbase64"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{instance_key}}",
+											"description": "Instance Key\n(Required)"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6500"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1964-it1yLNbbsfrb1dGLJs2/MyNIhGY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Feb 2023 14:44:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"QR Base64 fetched successfully\",\n    \"qrcode\": \"data:image/png;base64,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\"\n}"
+						},
+						{
+							"name": "failure",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/instance/qrbase64?key={{instance_key}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"instance",
+										"qrbase64"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{instance_key}}",
+											"description": "Instance Key\n(Required)"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 Feb 2023 02:57:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-ju8IFzgacKDwfOK9C4aTlo8uPgg\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"message\": \"QR Base64 fetched successfully\",\n    \"qrcode\": \" \"\n}"
+						}
+					]
 				},
 				{
 					"name": "Instance Info",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -132,6 +291,16 @@
 				{
 					"name": "Restore All Instances",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -150,6 +319,16 @@
 				{
 					"name": "Delete Instance",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -176,6 +355,16 @@
 				{
 					"name": "Logout Instance",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -202,6 +391,16 @@
 				{
 					"name": "List All Sessions",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -234,6 +433,16 @@
 				{
 					"name": "Send Text Message",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -241,13 +450,13 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "",
+									"value": "6285759826467",
 									"description": "Recipient Id or Group Id\n(Required)",
 									"type": "text"
 								},
 								{
 									"key": "message",
-									"value": "",
+									"value": "TEST MESSAGE PROMOTION",
 									"description": "Message to Send\n(Required)",
 									"type": "text"
 								}
@@ -694,11 +903,21 @@
 				{
 					"name": "Send Button With Media",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"\",\n    \"btndata\": {\n        \"text\": \"Title of Message\",\n        \"buttons\": [\n            {\n                \"type\": \"replyButton\",\n                \"title\": \"this button reply\"\n            },\n            {\n                \"type\": \"callButton\",\n                \"title\": \"this button calls\",\n                \"payload\": \"91999999999\"\n            }\n        ],\n        \"footerText\": \"Footer text\",\n        \"image\": \"https://picsum.photos/536/354\",\n        \"mediaType\": \"image\",\n        \"mimeType\": \"image/jpeg\"\n    }\n}",
+							"raw": "{\n    \"id\": \"6289698190403\",\n    \"btndata\": {\n        \"text\": \"Ini teks promosi\",\n        \"buttons\": [\n            {\n                \"type\": \"urlButton\",\n                \"title\": \"Click me (URL)\",\n                \"payload\": \"https://google.com\"\n            }\n        ],\n        \"footerText\": \"Foooter Pak\",\n        \"image\": \"https://picsum.photos/536/354\",\n        \"mediaType\": \"image\",\n        \"mimeType\": \"image/jpeg\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -739,6 +958,16 @@
 				{
 					"name": "Is On Whatsapp?",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "lJnxvpmN9oEwsqAM2wA7",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
