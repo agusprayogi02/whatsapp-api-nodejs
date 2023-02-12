@@ -29,6 +29,14 @@ services:
             - PORT=3333
             - MONGODB_ENABLED=true
             - MONGODB_URL=mongodb://mongodb:27017
+            - LOG_LEVEL=silent
+            - APP_URL=https://karin.nexteam.id
+            - RESTORE_SESSIONS_ON_START_UP=false
+            - CLIENT_PLATFORM='Whatsapp MD'
+            - CLIENT_BROWSER='Chrome'
+            - CLIENT_VERSION='4.0.0'
+            - INSTANCE_MAX_RETRY_QR=2
+            - MARK_MESSAGES_READ=false
             # - WEBHOOK_ENABLED=false
             # - WEBHOOK_URL=${WEBHOOK_URL}
             # - WEBHOOK_BASE64=${WEBHOOK_BASE64}
