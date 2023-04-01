@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+    # mongodb:
+    #     container_name: mongodb-wa
+    #     image: bitnami/mongodb:latest
+    #     restart: unless-stopped
+    #     ports:
+    #         - 27017:27017
+    #     volumes:
+    #         - db:/data/db
+    app:
+        container_name: api
+        image: ilzam/salman-wa-api:1.0.0
+        # build:
+        #     context: .
+        #     dockerfile: Dockerfile
+        #     args:
+        #         - PORT=${PORT}
+        # depends_on:
+        #     - mongodb
+        restart: unless-stopped
+        # env_file: .env
+        ports:
+            - 3333:3333
+        environment:
+            - TOKEN=lJnxvpmN9oEwsqAM2wA7
+            - PROTECT_ROUTES=true
+            - PORT=3333
+            - MONGODB_ENABLED=false
+            - MONGODB_URL=mongodb://mongodb:27017
+            - LOG_LEVEL=silent
+            - APP_URL=https://karin.nexteam.id
+            - RESTORE_SESSIONS_ON_START_UP=false
+            - CLIENT_PLATFORM='Whatsapp MD'
+            - CLIENT_BROWSER='Chrome'
+            - CLIENT_VERSION='4.0.0'
+            - INSTANCE_MAX_RETRY_QR=100
+            - MARK_MESSAGES_READ=false
+            # - WEBHOOK_ENABLED=false
+            # - WEBHOOK_URL=${WEBHOOK_URL}
+            # - WEBHOOK_BASE64=${WEBHOOK_BASE64}
+        volumes:
+            - ./:/home/node/app
+            - /home/node/app/node_modules/
+
+# volumes:
+#     db:
